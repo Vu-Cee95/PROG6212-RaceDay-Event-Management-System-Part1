@@ -1,30 +1,26 @@
 ﻿name: Part 1 Documentation Check
 
-on:
-  push:
-  pull_request:
+on: [push, pull_request]
 
 jobs:
   validate-part1:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Check docs folder exists
+      - name: Check docs folder
         run: test -d docs
 
-      - name: Check README exists
-        run: test -f README.md
-
-      - name: Check ERD exists
+      - name: Check ERD
         run: test -f docs/RaceDay_ERD.pdf
 
-      - name: Check API Plan exists
+      - name: Check API Endpoint Plan
         run: test -f docs/RaceDay_API_Endpoint_Plan.pdf
 
-      - name: Check SQL Script exists
+      - name: Check SQL Script
         run: test -f docs/RaceDay_Database.sql
 
-      - name: Success message
-        run: echo "All Part 1 files are present!"
+      - name: Check README
+        run: test -f README.md
